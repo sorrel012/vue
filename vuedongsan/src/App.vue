@@ -13,9 +13,7 @@
 <script>  
 
   export default {
-    name: 'App',
-
-    
+    name: 'App',    
     data() {
       ///데이터 보관함(object 자료로)
       return {
@@ -23,9 +21,7 @@
         price2 : 45
       } 
     },
-
     components: {
-
     }
   }
 
