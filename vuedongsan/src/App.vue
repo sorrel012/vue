@@ -1,6 +1,6 @@
 <template>
 
-  <ModalView/>
+  <ModalView :rooms="rooms" :clicked="clicked" :isOpened="isOpened" @closeModal="isOpened = false"/>
 
   <div class="menu">
     <!-- <a v-for="i in navbar" :key="i">{{ i }}</a> -->
@@ -16,11 +16,7 @@
     <button @click="increase(i)">신고하기</button> <span>신고수: {{ reports[i] }}</span>
   </div> -->
 
-  <div v-for="(a,i) in rooms" :key="i">
-    <img :src="a.image" class="images">
-    <h4 @click="isOpened = true; isClicked = i " class="titleModal">{{ a.title }}</h4>
-    <p>{{ a.price }}원</p>
-  </div>
+  <CardRoom :rooms="rooms" :isOpened="isOpened" @openModal="isOpened = true; clicked= $event" @report="clicked++"/>
 
 </template>
 
@@ -29,19 +25,20 @@
   import data from './assets/oneroom.js';
   import DiscountBanner from './DiscountBanner.vue';
   import ModalView from './ModalView.vue';
+  import CardRoom from './CardRoom.vue';
 
   export default {
     name: 'App',
     data() {
       ///데이터 보관함(object 자료로)
       return {        
-        price: [40, 45],
-        products: ['자연빌', 'cs타워'],
+        // price: [40, 45],
+        // products: ['자연빌', 'cs타워'],
         navbar: ['Home', 'Shop', 'About'],
         reports: [0, 0],
         isOpened: false,
         rooms: data,
-        isClicked: 0
+        clicked: 0
       }
     },
     methods: {
