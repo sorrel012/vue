@@ -6,29 +6,35 @@
   </div>
 
   <div v-for="(a,i) in products" :key="i">
-    <h4 style="{{ st }}">{{ a }}</h4>
+    <img :src="require('./assets/room' + (i+1) + '.jpg')">
+    <h4 >{{ a }}</h4>
     <p>{{ price[i] }}만원</p>
+    <button @click="increase(i)">신고하기</button> <span>신고수: {{ reports[i] }}</span>
   </div>
 </template>
 
 <script>  
 
   export default {
-    name: 'App',    
+    name: 'App',
     data() {
       ///데이터 보관함(object 자료로)
       return {
-        price : [40, 45],
-        st : 'color: blue',
+        price: [40, 45],
         products: ['자연빌', 'cs타워'],
-        navbar: ['Home', 'Shop', 'About']
-      } 
+        navbar: ['Home', 'Shop', 'About'],
+        reports: [0, 0]
+      }
+    },
+    methods: {
+      increase(i) {
+        this.reports[i]++
+      }
     },
     components: {
     }
   }
-
-  
+    
 </script>
 
 <style>
@@ -50,6 +56,10 @@
   .menu a {
     color: white;
     padding: 10px;
+  }
+
+  img {
+    margin-top: 40px;;
   }
 
 </style>
