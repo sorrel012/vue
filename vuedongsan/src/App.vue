@@ -16,7 +16,7 @@
     <button @click="increase(i)">신고하기</button> <span>신고수: {{ reports[i] }}</span>
   </div> -->
 
-  <CardRoom :rooms="rooms" :isOpened="isOpened" @openModal="isOpened = true; clicked= $event" @report="clicked++"/>
+  <CardRoom :rooms="rooms" :isOpened="isOpened" :reports="reports" @openModal="isOpened = true; clicked= $event" @reports="reports[$event]++"/>
 
 </template>
 
@@ -35,20 +35,18 @@
         // price: [40, 45],
         // products: ['자연빌', 'cs타워'],
         navbar: ['Home', 'Shop', 'About'],
-        reports: [0, 0],
+        reports: [0, 0, 0, 0, 0, 0],
         isOpened: false,
         rooms: data,
         clicked: 0
       }
     },
     methods: {
-      increase(i) {
-        this.reports[i]++
-      }
     },
     components: {
       DiscountBanner : DiscountBanner,
       ModalView : ModalView,
+      CardRoom : CardRoom
     }
   }
     
