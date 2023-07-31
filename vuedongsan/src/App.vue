@@ -49,7 +49,7 @@
       DiscountBanner : DiscountBanner,
       ModalView : ModalView,
       CardRoom : CardRoom
-    }
+    },
   }
     
 </script>
