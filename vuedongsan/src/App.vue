@@ -1,6 +1,8 @@
 <template>
 
-  <ModalView :rooms="rooms" :clicked="clicked" :isOpened="isOpened" @closeModal="isOpened = false"/>
+  <transition name="fade">
+    <ModalView :rooms="rooms" :clicked="clicked" :isOpened="isOpened" @closeModal="isOpened = false"/>
+  </transition>
 
   <div class="menu">
     <!-- <a v-for="i in navbar" :key="i">{{ i }}</a> -->
@@ -106,6 +108,18 @@
 
   .titleModal:hover {
     cursor: pointer;
+  }
+
+  .fade-enter-from {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    transition: all 1s;
+  }
+
+  .fade-enter-to {
+    opacity: 1;
   }
 
 </style>
