@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>{{ propsdata }}</h1>
-    <button v-on:click="sendEvent">send</button>
+    <button @click="sendEvent">send</button>
   </header>
 </template>
 

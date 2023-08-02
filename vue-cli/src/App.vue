@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-header v-bind:propsdata="str" v-on:renew="renewStr"></app-header>
+    <app-header :propsdata="str" v-on:renew="renewStr"></app-header>
   </div>
 </template>
 
