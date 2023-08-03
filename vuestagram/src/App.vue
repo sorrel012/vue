@@ -47,12 +47,11 @@ export default {
             axios.get(`https://codingapple1.github.io/vue/more${this.id}.json`)
                 .then((result) => {
                     this.insta.push(result.data);
+                this.id++;
                 })
                 .catch(error => {
                     console.log(error);
-                });            
-
-            this.id++;
+                });          
         }   
     }
 }
