@@ -3,10 +3,10 @@
     <div class="container-fluid">
 
       <nav class="navbar bg-light px-3 mb-5">
-        <a class="navbar-brand" href="#">Blog</a>
-        <ul class="nav nav-pills">
+        <a class="navbar-brand" href="/">Blog</a>
+        <ul class="nav">
           <li class="nav-item">
-            <router-link to="/main" class="nav-link">메인</router-link>
+            <router-link to="/home" class="nav-link">메인</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/list" class="nav-link">게시판</router-link>

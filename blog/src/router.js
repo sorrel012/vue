@@ -1,18 +1,23 @@
 import Vue from 'vue'
 import Router from "vue-router";
 import List from './components/List.vue'
-import Main from './components/Main.vue'
+import Home from './components/Home.vue'
+import Detail from './components/Detail.vue'
 
 Vue.use(Router) 
 
 const routes = [
   {
-    path: '/list',
+    path: '/list:id(\\d+)',
     component: List,
   },
   {
-    path: '/main',
-    component: Main
+    path: '/home',
+    component: Home
+  },
+  {
+    path: '/detail/',
+    component: Detail
   }
 ]
 
