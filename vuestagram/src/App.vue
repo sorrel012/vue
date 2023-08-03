@@ -13,7 +13,9 @@
 
             <Container :insta="insta"/>
 
-            <button @click="showMore">더보기</button>
+            <div style="text-align: center;">
+                <button @click="showMore">더보기</button>
+            </div>
 
             <div class="footer">
                 <ul class="footer-button-plus">
@@ -22,7 +24,15 @@
                 </ul>
             </div>
 
-        </div>
+            
+            <div style="text-align: center;">
+                <div v-if="step == 0">내용0</div>
+                <div v-if="step == 1">내용1</div>
+                <div v-if="step == 2">내용2</div>
+                <button @click="tab(i)" v-for="i in 3" :key="i" style="margin-top: 500px;">버튼 {{i-1}}</button>
+            </div>
+
+        </div>        
     </div>
 </template>
 
@@ -36,7 +46,8 @@ export default {
     data() {
         return {
             insta,
-            id: 0
+            id: 0,
+            step: 0,
         }
     },
     components: {
@@ -52,7 +63,10 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });          
-        }   
+        },
+        tab(value) {
+            this.step = value - 1;
+        }
     }
 }
 </script>
