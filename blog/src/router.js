@@ -3,12 +3,13 @@ import Router from "vue-router";
 import List from './components/List.vue'
 import Home from './components/Home.vue'
 import Detail from './components/Detail.vue'
+import Comment from './components/Comment'
 
 Vue.use(Router) 
 
 const routes = [
   {
-    path: '/list:id(\\d+)',
+    path: '/list',
     component: List,
   },
   {
@@ -16,8 +17,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/detail/',
-    component: Detail
+    path: '/detail/:id(\\d+)',
+    component: Detail,
+    children: [
+      {
+        path: "comment",
+        component: Comment
+      }
+  ]
   }
 ]
 
