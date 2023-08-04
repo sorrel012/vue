@@ -1,12 +1,22 @@
 <template>
-    <div class="filter-item" :style="`background-image: url(${uploadImage})`"></div> 
+    <div @click="chooseFilter" :class="`${filter} filter-item`" :style="`background-image: url(${uploadImage})`">
+        <slot></slot>
+    </div> 
 </template>
 
 <script>
+import { eventBus } from '../assets/eventBus.js';
+
 export default {
     name: 'filterbox',
     props: {
         uploadImage: String,
+        filter: String,
+    }, 
+    methods: {
+        chooseFilter() {
+            eventBus.$emit('choose', this.filter);
+        }
     }
 }
 </script>
@@ -22,4 +32,7 @@ export default {
         background-size: cover;
         background-position : center;
     }
+    .filter-item:hover {
+        cursor: pointer;
+    }   
 </style>

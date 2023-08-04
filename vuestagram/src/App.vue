@@ -13,7 +13,7 @@
                 <img src="./assets/logo.png" class="logo" />
             </div>
 
-            <Container :insta="insta" :step="step" :uploadImage="uploadImage" @writing="writing = $event"/>
+            <Container :insta="insta" :step="step" :uploadImage="uploadImage" :filter="filter" @writing="writing = $event"/>
 
             <div v-if="step == 0">
                 <div style="text-align: center;">
@@ -37,6 +37,7 @@
 import Container from './components/Container.vue'
 import insta from './assets/insta.js'
 import axios from 'axios'
+import { eventBus } from './assets/eventBus.js';
 
 export default {
     name: 'App',
@@ -47,6 +48,7 @@ export default {
             step: 0,
             uploadImage: '',
             writing: '',
+            filter: '',
         }
     },
     components: {
@@ -88,12 +90,17 @@ export default {
                         date: "August 4",
                         liked: false,
                         content: this.writing,
-                        filter: "perpetua"
+                        filter: this.filter
                 };
                 this.insta.unshift(mine);
                 this.step = 0;
             }
         },
+    },
+    mounted() {
+        eventBus.$on('choose', (f) => {
+            this.filter = f;
+        });
     }
 }
 </script>

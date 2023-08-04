@@ -8,16 +8,17 @@
 
         <!-- 필터선택페이지 -->
         <div v-if="step == 1">
-            <div class="upload-image" :style="`background-image:url(${uploadImage})`"></div>
+            <div :class="filter" class="upload-image" :style="`background-image:url(${uploadImage})`"></div>
             <div class="filters">
-                <FilterBox :uploadImage="uploadImage" v-for="i in filters" :key="i"></FilterBox>             
-                <FilterBox :uploadImage="uploadImage"></FilterBox>
+                <FilterBox :uploadImage="uploadImage" :filter="filter" v-for="filter in filters" :key="filter">
+                    {{ filter }}
+                </FilterBox>    
             </div>
         </div>
 
         <!-- 글작성페이지 -->
         <div v-if="step == 2">
-            <div class="upload-image" :style="`background-image:url(${uploadImage})`"></div>
+            <div class="upload-image" :class="filter" :style="`background-image:url(${uploadImage})`"></div>
             <div class="write">
                 <textarea @input="$emit('writing', $event.target.value)" class="write-box" placeholder="글을 작성해 주세요."></textarea>
             </div>
@@ -37,17 +38,25 @@ export default {
             filters: [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
                     "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
                     "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+            tmpFilter: '',
         }
     },
     props: {
         insta: Array,
         step: Number,
         uploadImage: String,
+        filter: String,
     },
     components: {
         Post,
         FilterBox,
     },
+    methods: {
+        handlePreview: function(filter)  {
+            alert(this.tmpFilter);
+            this.tmpFilter = filter;
+        },
+    }
 }
 </script>
 
