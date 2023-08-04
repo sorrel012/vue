@@ -1,6 +1,6 @@
 export default[
     {
-      name: "Kim Hyun",
+      name: "Daily",
       userImage: "https://picsum.photos/100?random=3",
       postImage: "https://picsum.photos/600?random=3",
       likes: 36,
@@ -10,7 +10,7 @@ export default[
       filter: "perpetua"
     },
     {
-      name: "John Doe",
+      name: "Han",
       userImage: "https://picsum.photos/100?random=4",
       postImage: "https://picsum.photos/600?random=4",
       likes: 20,
@@ -20,7 +20,7 @@ export default[
       filter: "clarendon"
     },
     {
-      name: "Minny",
+      name: "Sorrel",
       userImage: "https://picsum.photos/100?random=5",
       postImage: "https://picsum.photos/600?random=5",
       likes: 49,
