@@ -13,6 +13,9 @@
                 <img src="./assets/logo.png" class="logo" />
             </div>
 
+            <h4>안녕 {{ $store.state.name }} </h4>
+            <button @click="$store.state.name = 'park'"></button>
+
             <Container :insta="insta" :step="step" :uploadImage="uploadImage" :filter="filter" @writing="writing = $event"/>
 
             <div v-if="step == 0">
