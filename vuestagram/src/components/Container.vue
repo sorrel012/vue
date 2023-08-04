@@ -3,7 +3,7 @@
 
         <!-- 글 목록 -->
         <div v-if="step == 0">
-            <Post :insta="insta[i]" v-for="(a,i) in insta" :key="i"/>
+            <Post :insta="a" v-for="(a,i) in $store.state.insta" :key="i"/>
         </div>
 
         <!-- 필터선택페이지 -->

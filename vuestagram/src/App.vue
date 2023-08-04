@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <div>
+
             <div class="header">
                 <ul class="header-button-left">
                     <li v-if="step == 1" @click="step=0">Cancle</li>
@@ -13,14 +14,11 @@
                 <img src="./assets/logo.png" class="logo" />
             </div>
 
-            <h4>안녕 {{ $store.state.name }} </h4>
-            <button @click="$store.state.name = 'park'"></button>
-
-            <Container :insta="insta" :step="step" :uploadImage="uploadImage" :filter="filter" @writing="writing = $event"/>
+            <Container :step="step" :uploadImage="uploadImage" :filter="filter" @writing="writing = $event"/>
 
             <div v-if="step == 0">
                 <div style="text-align: center;">
-                    <button @click="showMore">더보기</button>
+                    <button @click="$store.dispatch('showMore')">더보기</button>
                 </div>
             </div>
 
@@ -38,16 +36,13 @@
 
 <script>
 import Container from './components/Container.vue'
-import insta from './assets/insta.js'
-import axios from 'axios'
 import { eventBus } from './assets/eventBus.js';
+import Swal from 'sweetalert2'
 
 export default {
     name: 'App',
     data() {
         return {
-            insta,
-            id: 0,
             step: 0,
             uploadImage: '',
             writing: '',
@@ -58,17 +53,6 @@ export default {
         Container,
     },
     methods: {
-        showMore() {         
-            axios.get(`https://codingapple1.github.io/vue/more${this.id}.json`)
-                .then((result) => {
-                    this.insta.push(result.data);
-                this.id++;
-                })
-                .catch(error => {
-                    console.log(error);
-                    alert('더 이상 게시물이 없습니다.')
-                });          
-        },
         tab(value) {
             this.step = value - 1;
         },
@@ -78,12 +62,30 @@ export default {
                 this.step++;
                 this.uploadImage = URL.createObjectURL(file[0])
             } else {
-                alert('이미지만 업로드할 수 있습니다.');
+                Swal.fire({
+                    icon: 'error',
+                    // title: 'Oops...',
+                    text: '이미지만 업로드할 수 있습니다.',
+                    //footer: '<a href="">Why do I have this issue?</a>'
+                    
+                    customClass: {
+                            popup: 'popup-font'
+                        }
+                });
+                //alert('이미지만 업로드할 수 있습니다.');
             }
         },
         publish() {
             if(this.writing == null || this.writing == '') {
-                alert('게시글을 입력해 주세요.');
+                Swal.fire({
+                    icon: 'error',
+                    // title: 'Oops...',
+                    text: '내용을 입력해 주세요.',
+                    //footer: '<a href="">Why do I have this issue?</a>'
+                        customClass: {
+                            popup: 'popup-font'
+                        }
+                });
             } else {
                 var mine = {
                         name: "Hanee",
@@ -95,7 +97,7 @@ export default {
                         content: this.writing,
                         filter: this.filter
                 };
-                this.insta.unshift(mine);
+                this.$store.commit('write', mine);
                 this.step = 0;
             }
         },
@@ -219,7 +221,7 @@ export default {
         overflow: visible;
         font-family: SUITE-Regular;
     }
-    
+
     #app {
         box-sizing: border-box;
         font-family: SUITE-Regular;
@@ -231,4 +233,9 @@ export default {
         border-right: 1px solid #eee;
         border-left: 1px solid #eee;
     }
+
+    .popup-font {
+        font-family: SUITE-Regular;
+    }
+
 </style>
