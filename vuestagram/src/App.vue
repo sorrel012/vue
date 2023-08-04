@@ -3,33 +3,30 @@
         <div>
             <div class="header">
                 <ul class="header-button-left">
-                    <li>Cancel</li>
+                    <li v-if="step == 1" @click="step=0">Cancle</li>
+                    <li v-if="step == 2" @click="step--">Previous</li>
                 </ul>
                 <ul class="header-button-right">
-                    <li>Next</li>
+                    <li v-if="step == 1" @click="step++">Next</li>
+                    <li v-if="step == 2" @click="step=0">Cancle</li>
                 </ul>
                 <img src="./assets/logo.png" class="logo" />
             </div>
 
-            <Container :insta="insta"/>
+            <Container :insta="insta" :step="step" :uploadImage="uploadImage" @writing="writing = $event"/>
 
-            <div style="text-align: center;">
-                <button @click="showMore">더보기</button>
+            <div v-if="step == 0">
+                <div style="text-align: center;">
+                    <button @click="showMore">더보기</button>
+                </div>
             </div>
 
             <div class="footer">
                 <ul class="footer-button-plus">
-                    <input type="file" id="file" class="inputfile" />
-                    <label for="file" class="input-plus">+</label>
+                    <input @change="upload" accept="image/*" type="file" id="file" class="inputfile"/>
+                    <label  v-if="step == 0" for="file" class="input-plus">+</label>
+                    <label  v-if="step == 2" class="input-plus pub" @click="publish">발행</label>
                 </ul>
-            </div>
-
-            
-            <div style="text-align: center;">
-                <div v-if="step == 0">내용0</div>
-                <div v-if="step == 1">내용1</div>
-                <div v-if="step == 2">내용2</div>
-                <button @click="tab(i)" v-for="i in 3" :key="i" style="margin-top: 500px;">버튼 {{i-1}}</button>
             </div>
 
         </div>        
@@ -48,6 +45,8 @@ export default {
             insta,
             id: 0,
             step: 0,
+            uploadImage: '',
+            writing: '',
         }
     },
     components: {
@@ -62,11 +61,39 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                    alert('더 이상 게시물이 없습니다.')
                 });          
         },
         tab(value) {
             this.step = value - 1;
-        }
+        },
+        upload(e) {
+            let file = e.target.files;
+            if(file[0].type.includes) {
+                this.step++;
+                this.uploadImage = URL.createObjectURL(file[0])
+            } else {
+                alert('이미지만 업로드할 수 있습니다.');
+            }
+        },
+        publish() {
+            if(this.writing == null || this.writing == '') {
+                alert('게시글을 입력해 주세요.');
+            } else {
+                var mine = {
+                        name: "Hanee",
+                        userImage: "https://picsum.photos/100?random=8",
+                        postImage: this.uploadImage,
+                        likes: 0,
+                        date: "August 4",
+                        liked: false,
+                        content: this.writing,
+                        filter: "perpetua"
+                };
+                this.insta.unshift(mine);
+                this.step = 0;
+            }
+        },
     }
 }
 </script>
@@ -167,6 +194,20 @@ export default {
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
         font-weight: 700;
         font-style: normal;
+    }
+
+    .pub {
+        background-color: rgb(207, 237, 255);
+        padding: 5px 15px;
+        border-radius: 7px;
+        color: white;
+        font-size: 1.3rem;
+    }
+
+    textarea {
+        resize: none;
+        overflow: visible;
+        font-family: SUITE-Regular;
     }
     
     #app {

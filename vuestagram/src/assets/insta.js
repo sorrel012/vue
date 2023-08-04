@@ -6,7 +6,7 @@ export default[
       likes: 36,
       date: "May 15",
       liked: false,
-      content: "오늘 무엇을 했냐면요 아무것도 안 했어요!",
+      content: "오늘은 하루 종일 vue 공부 중입니다",
       filter: "perpetua"
     },
     {
@@ -16,7 +16,7 @@ export default[
       likes: 20,
       date: "Apr 20",
       liked: false,
-      content: "흔한 자랑스타그램",
+      content: "오늘까지 강의 part3까지 다 듣는 것이 목표!",
       filter: "clarendon"
     },
     {
@@ -26,7 +26,7 @@ export default[
       likes: 49,
       date: "Apr 4",
       liked: false,
-      content: "우리집 개는 화장실 물도 내림",
+      content: "언능 집 이사 가고 싶다.. ",
       filter: "lofi"
     }
   ]
