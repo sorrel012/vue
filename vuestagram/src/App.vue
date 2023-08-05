@@ -18,7 +18,7 @@
 
             <div v-if="step == 0">
                 <div style="text-align: center;">
-                    <button @click="$store.dispatch('showMore')">더보기</button>
+                    <button @click="showMore()">더보기</button>
                 </div>
             </div>
 
@@ -38,6 +38,7 @@
 import Container from './components/Container.vue'
 import { eventBus } from './assets/eventBus.js';
 import Swal from 'sweetalert2'
+import { mapActions, mapMutations, mapActions } from 'vuex';
 
 export default {
     name: 'App',
@@ -53,6 +54,8 @@ export default {
         Container,
     },
     methods: {
+        ...mapMutations(['write']),
+        ...mapActions(['showMore']),
         tab(value) {
             this.step = value - 1;
         },
@@ -97,7 +100,7 @@ export default {
                         content: this.writing,
                         filter: this.filter
                 };
-                this.$store.commit('write', mine);
+                this.write(mine);
                 this.step = 0;
             }
         },
