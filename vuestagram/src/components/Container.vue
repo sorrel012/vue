@@ -3,7 +3,7 @@
 
         <!-- 글 목록 -->
         <div v-if="step == 0">
-            <Post :insta="a" v-for="(a,i) in $store.state.insta" :key="i"/>
+            <Post :insta="a" v-for="(a,i) in insta" :key="i"/>
         </div>
 
         <!-- 필터선택페이지 -->
@@ -42,7 +42,6 @@ export default {
         }
     },
     props: {
-        insta: Array,
         step: Number,
         uploadImage: String,
         filter: String,
@@ -50,6 +49,9 @@ export default {
     components: {
         Post,
         FilterBox,
+    },    
+    computed: {
+        ...mapState(['insta']),
     },
     methods: {
         handlePreview: function(filter)  {
