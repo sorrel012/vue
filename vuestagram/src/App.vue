@@ -38,7 +38,7 @@
 import Container from './components/Container.vue'
 import { eventBus } from './assets/eventBus.js';
 import Swal from 'sweetalert2'
-import { mapActions, mapMutations, mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
     name: 'App',
