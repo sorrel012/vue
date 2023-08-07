@@ -30,6 +30,7 @@
 <script>
 import Post from './Post.vue';
 import FilterBox from './FilterBox.vue';
+import { mapState } from 'vuex';
 
 export default {
     name: 'container',
