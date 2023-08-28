@@ -11,3 +11,5 @@ created vs mounted
 watch vs computed
 
 emit
+
+props
