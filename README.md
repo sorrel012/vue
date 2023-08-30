@@ -15,3 +15,5 @@ emit
 props
 
 async, await 로 axios 활용
+
+beforeDestroy() : Vue3.0 명칭 바뀜
