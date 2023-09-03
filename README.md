@@ -19,3 +19,11 @@ async, await 로 axios 활용
 beforeDestroy() : Vue3.0 명칭 바뀜
 
 vue.config.js 에서 포트 번호 바꿀 수 o
+const { defineConfig } = require('@vue/cli-service')
+module.exports = {
+  transpileDependencies: true,
+  devServer: {
+    port: 8080
+  }
+}
+
