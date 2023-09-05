@@ -28,3 +28,4 @@ vue.config.js 에서 포트 번호 바꿀 수 o
       }
     }
 
+:bind
