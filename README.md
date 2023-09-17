@@ -31,3 +31,4 @@ vue.config.js 에서 포트 번호 바꿀 수 o
 :bind
 
 v-model 유용
+> value랑 동시 사용 불가
