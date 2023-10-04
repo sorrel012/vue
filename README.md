@@ -11,7 +11,6 @@ created vs mounted
 watch vs computed
 
 emit
-
 props
 
 async, await 로 axios 활용
@@ -31,7 +30,7 @@ vue.config.js 에서 포트 번호 바꿀 수 o
 :bind
 
 v-model 유용
-> value랑 동시 사용 불가 
+> value랑 동시 사용 불가
 
 ### 라이브러리
 - font awesome
