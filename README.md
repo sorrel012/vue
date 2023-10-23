@@ -9,7 +9,7 @@ created vs mounted
 
 watch vs computed
   
-emit
+emit  
 props  
 
 async, await 로 axios 활용
