@@ -37,4 +37,4 @@ sessionStorage != session
 - sweet alert2 
 - ckeditor5(build classic) > online builder 
 
-순수 javascript에서도 
+순수 javascript에서도 cdn import 해서 사용 가능
