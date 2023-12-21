@@ -1,20 +1,6 @@
 # vue  
 
-npm install -g @vue/cli
-
-## axios 정리
-https://www.canva.com/design/DAFq6bZZ584/M_pISqK_npD_lUaUvsc83A/edit
-
-created vs mounted 
-
-watch vs computed
-  
-emit  
-props  
-
-async, await 로 axios 활용   (ㅔ개ㅡㅑㄴㄷㄴ)
-
-beforeDestroy() : Vue3.0 명칭 바뀜 
+    npm install -g @vue/cli
 
 vue.config.js 에서 포트 번호 바꿀 수 o
 
@@ -26,15 +12,6 @@ vue.config.js 에서 포트 번호 바꿀 수 o
       }
     }
 
-:bind
-
-v-model 유용
-> value랑 동시 사용 불가
-
-sessionStorage != session
-### 라이브러리
-- font awesome
-- sweet alert2 
-- ckeditor5(build classic) > online builder 
-
-순수 javascript에서도 cdn import 해서 사용 가능
+### 📁참고 강의
+- 코딩애플 : 인스타그램을 만들며 배워보는 Vue.js 3 완벽 가이드
+- 인프런(캡틴판교) : Vue.js 시작하기 - Age of Vue.js
